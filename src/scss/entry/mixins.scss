@@ -1,0 +1,76 @@
+$mobile: 750px;
+$tablet: 1200px;
+$desctop: 1600px;
+
+@mixin respond-to($media) {
+  @if $media == m {
+    @media only screen and (max-width: $mobile) {
+      @content;
+    }
+  } @else if $media == ls-m {
+    @media only screen and (max-width: $mobile) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $media == t {
+    @media only screen and (max-width: $tablet) {
+      @content;
+    }
+  } @else if $media == ls-t {
+    @media only screen and (max-width: $tablet) and (orientation: landscape) {
+      @content;
+    }
+  } @else if $media == only-t {
+    @media only screen and (max-width: $tablet) and (min-width: $mobile) {
+      @content;
+    }
+
+  } @else if $media == d {
+    @media only screen and (max-width: $desctop) and (min-width: $tablet) {
+      @content;
+    }
+
+  } @else if $media == dm {
+    @media only screen and (max-width: $desctop) and (min-width: $tablet) {
+      @content;
+    }
+
+  } @else if $media == 1440 {
+    @media only screen and (max-width: 1380px) and (orientation: landscape) {
+      @content;
+    }
+
+  }
+}
+
+@mixin hover {
+  @media only screen and (min-width: $tablet + 1) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin position($position) {
+  @if $position == center {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 50%;
+    top: 50%;
+  }
+  @if $position == centerY {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+  }
+  @if $position == centerX {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+  }
+  @if $position == none {
+    position: relative;
+    transform: translate(0, 0);
+    top: auto;
+    left: auto;
+  }
+}
